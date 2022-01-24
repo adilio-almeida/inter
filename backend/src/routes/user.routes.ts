@@ -4,7 +4,7 @@ import { UserController } from '../resources/user/user.controllers';
 const userRouter = Router();
 const userController = new UserController()
 
-userRouter.get('/signin', userController.signin )
-userRouter.get('/signup', userController.signup)
+userRouter.post('/signin', userController.signin )
+userRouter.post('/signup', userController.signup)
 
 export default userRouter;
