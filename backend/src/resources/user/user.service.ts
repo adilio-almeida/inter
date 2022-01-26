@@ -77,4 +77,19 @@ export default class UserService {
 
     }
 
+    async me(user: Partial<User>) {
+        const userRepository = getRepository(User);
+        const currentUser = await userRepository.findOne({where: {id: user.id}})
+
+        if(!currentUser){
+            throw new AppError('Usuário não econtrado', 401);
+        }
+
+        // @ts-expect-error ignora
+        delete currentUser.password
+
+        return currentUser;
+
+     }
+
 }
