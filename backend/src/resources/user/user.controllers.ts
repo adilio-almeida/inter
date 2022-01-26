@@ -11,6 +11,9 @@ export class UserController {
     }
 
     async signup(req: Request, res: Response) {
-        return res.send('Retorno do controller up')
+        const userService = new UserService()
+        const user = await userService.signUp(req.body)
+
+        return res.status(201).send(user)
     }
 }
